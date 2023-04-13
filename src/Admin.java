@@ -106,19 +106,18 @@ public class Admin {
                 int hargaMenu =input.nextInt();
                 Menu daftarMenu = new Menu(namaMenu, hargaMenu);
                 restaurants.tambahMinuman(daftarMenu);
-            }else if (pilihan1==3) {
+            }/*else if (pilihan1==3) {
                 ArrayList<Menu> tampilkanMenu = new ArrayList<Menu>();
 
                 for (int i=0; i<daftarRestoran.size(); i++){
                     System.out.println("Menu " + i+1);
-                    System.out.println("Nama: " + daftarRestoran.get(i).getNama());
-                    System.out.println("Harga: " + daftarRestoran.get(i).get);
+                    System.out.println("Nama: " + daftarRestoran.get(i).getMenu().getNamaMenu());
+                    System.out.println("Harga: " + daftarRestoran.get(i).getMenu().getHargaMenu());
                 }
-            }else if(pilihan1 == 4){
+            }*/else if(pilihan1 == 4){
                 pageAdmin(daftarRestoran);
             }else {
                 System.out.println("Masukkan pilihan dengan benar");
-
             }
         }
 
@@ -129,10 +128,24 @@ public class Admin {
         System.out.println("|                  HAPUS RESTAURANT                  |");
         System.out.println("======================================================");
 
+        if(daftarRestoran.isEmpty()){
+            System.out.println("Tidak Ada Restoran yang Terdaftar");
+        } else {
+            for (int i=0; i<daftarRestoran.size(); i++){
+                System.out.println("Restoran " + i+1);
+                System.out.println("Nama: " + daftarRestoran.get(i).getNama());
+                System.out.println("Alamat: " + daftarRestoran.get(i).getAlamat());
+            }
+        }
 
-        
-        
-        
+        System.out.println("Masukkan nomor restaurant yang ingin dihapus : ");
+        int nomor = input.nextInt();
+        if(nomor < 1 || nomor > daftarRestoran.size()){
+            System.out.println("Nomor restaurant tidak valid.");
+        } else {
+            daftarRestoran.remove(nomor-1);
+            System.out.println("Restoran berhasil dihapus.");
+        }
     }
 
     public void kembaliLogin(ArrayList<Restaurant> daftarRestoran){

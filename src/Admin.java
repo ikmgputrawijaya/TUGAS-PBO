@@ -3,8 +3,12 @@ import java.util.ArrayList;
 
 public class Admin {
 
-    public void pageAdmin() {
-        Scanner input = new Scanner(System.in);
+    int pilihan1;
+
+    private static Scanner input = new Scanner(System.in);
+
+    public void pageAdmin(ArrayList<Restaurant>daftarRestoran) {
+
 
         int pilihan;
         boolean ulang = true;
@@ -13,23 +17,23 @@ public class Admin {
             System.out.println("======================================================");
             System.out.println("|                    ADMIN PAGE                      |");
             System.out.println("======================================================");
-            System.out.println("    1. Melihat Restaurant"      );
-            System.out.println("    2. Menambahkan Restaurant " );
-            System.out.println("    3. Menghapus Restaurant"    );
-            System.out.println("    4. Kembali ke Log in"       );
+            System.out.println("    1. Melihat Restaurant"                             );
+            System.out.println("    2. Menambahkan Restaurant "                        );
+            System.out.println("    3. Menghapus Restaurant"                           );
+            System.out.println("    4. Kembali ke Log in"                              );
             System.out.println("======================================================");
 
             System.out.print("Masukkan pilihan Anda : ");
             pilihan = input.nextInt();
 
             if (pilihan == 1) {
-                melihatRestaurant(ArrayList<String> namaRestaurant, ArrayList<String> alamatRestaurant, ArrayList<String> menuRestaurant);
+                melihatRestaurant(daftarRestoran);
             } else if (pilihan == 2) {
-                menambahRestaurant(ArrayList<String> namaRestaurant, ArrayList<String> alamatRestaurant, ArrayList<String> menuRestaurant);
+                menambahRestaurant(daftarRestoran);
             } else if (pilihan == 3) {
-
+                menghapusRestaurant(daftarRestoran);
             } else if (pilihan == 4) {
-                kembaliLogin();
+                kembaliLogin(daftarRestoran);
             } else {
                 System.out.println("Input Anda tidak valid");
                 System.out.println("'ulang' untuk mengulang dan 'tidak' untuk keluar");
@@ -38,52 +42,101 @@ public class Admin {
                     ulang = false;
                 }
             }
-            System.out.println("Program berakhir.");
+//            System.out.println("Program berakhir.");
+            input.nextLine();
         }
     }
 
-    public void melihatRestaurant(ArrayList<String> namaRestaurant, ArrayList<String> alamatRestaurant, ArrayList<String> menuRestaurant){
+    public void melihatRestaurant(ArrayList<Restaurant>daftarRestoran){
         System.out.println("======================================================");
         System.out.println("|                 DAFTAR RESTAURANT                  |");
         System.out.println("======================================================");
 
-        for (int i=0; i<namaRestaurant.size(); i++){
-            System.out.println("Nama: " + namaRestaurant.get(i));
-            System.out.println("Alamat: " + alamatRestaurant.get(i));
-            System.out.println("Menu: " + menuRestaurant.get(i));
-            System.out.println();
+        if(daftarRestoran.isEmpty()){
+            System.out.println("Tidak Ada Restoran yang Terdaftar");
+        } else {
+            for (int i=0; i<daftarRestoran.size(); i++){
+                System.out.println("Restoran " + i+1);
+                System.out.println("Nama: " + daftarRestoran.get(i).getNama());
+                System.out.println("Alamat: " + daftarRestoran.get(i).getAlamat());
+            }
         }
+        input.nextLine();
     }
 
 
-    public void menambahRestaurant(ArrayList<String> namaRestaurant, ArrayList<String> alamatRestaurant, ArrayList<String> menuRestaurant) {
+    public void menambahRestaurant(ArrayList<Restaurant>daftarRestoran ) {
+        input.nextLine();
         System.out.println("======================================================");
         System.out.println("|                 TAMBAH RESTAURANT                  |");
         System.out.println("======================================================");
-
-        Scanner input = new Scanner(System.in);
-
         System.out.print("Masukkan nama restaurant : ");
-        String nama = input.nextLine();
-        namaRestaurant.add(nama);
+        String namaRestoran = input.nextLine();
 
         System.out.print("Masukkan alamat restaurant : ");
-        String alamat = input.nextLine();
-        alamatRestaurant.add(alamat);
+        String alamatRestoran = input.nextLine();
+        Restaurant restaurants = new Restaurant(namaRestoran, alamatRestoran);
+        daftarRestoran.add(restaurants);
+        while (true){
+            System.out.println("======================================================");
+            System.out.println("|                     Tambahkan Menu                 |");
+            System.out.println("======================================================");
+            System.out.println("    1. Menambah makanan"                               );
+            System.out.println("    2. Menambah minuman"                               );
+            System.out.println("    3. Melihat Data Menu"                              );
+            System.out.println("    4. Kembali ke Admin Page"                          );
+            System.out.println("======================================================");
 
-        System.out.print("Masukkan menu restaurant : ");
-        String menu = input.nextLine();
-        menuRestaurant.add(menu);
+            System.out.println("Masukkan pilihan : ");
+            pilihan1 = input.nextInt();
+
+            if (pilihan1==1) {
+                input.nextLine();
+                System.out.println("Nama makanan : ");
+                String namaMenu = input.nextLine();
+                System.out.println("Harga makanan : ");
+                int hargaMenu =input.nextInt();
+                Menu daftarMenu = new Menu(namaMenu, hargaMenu);
+                restaurants.tambahMakanan(daftarMenu);
+            }else if (pilihan1==2){
+                input.nextLine();
+                System.out.println("Nama minuman : ");
+                String namaMenu = input.nextLine();
+                System.out.println("Harga minuman : ");
+                int hargaMenu =input.nextInt();
+                Menu daftarMenu = new Menu(namaMenu, hargaMenu);
+                restaurants.tambahMinuman(daftarMenu);
+            }else if (pilihan1==3) {
+                ArrayList<Menu> tampilkanMenu = new ArrayList<Menu>();
+
+                for (int i=0; i<daftarRestoran.size(); i++){
+                    System.out.println("Menu " + i+1);
+                    System.out.println("Nama: " + daftarRestoran.get(i).getNama());
+                    System.out.println("Harga: " + daftarRestoran.get(i).get);
+                }
+            }else if(pilihan1 == 4){
+                pageAdmin(daftarRestoran);
+            }else {
+                System.out.println("Masukkan pilihan dengan benar");
+
+            }
+        }
+
     }
 
-    public void menghapusRestaurant() {
+    public void menghapusRestaurant(ArrayList<Restaurant> daftarRestoran) {
         System.out.println("======================================================");
         System.out.println("|                  HAPUS RESTAURANT                  |");
         System.out.println("======================================================");
+
+
+        
+        
+        
     }
 
-    public void kembaliLogin(){
+    public void kembaliLogin(ArrayList<Restaurant> daftarRestoran){
         Login logins = new Login();
-        logins.login();
+        logins.login(daftarRestoran);
     }
 }

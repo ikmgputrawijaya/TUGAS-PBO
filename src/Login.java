@@ -1,7 +1,8 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Login {
-    public static void login() {
+    public static void login(ArrayList<Restaurant> daftarRestoran) {
         Scanner input = new Scanner(System.in);
         String username, password;
         boolean ulang = true;
@@ -24,11 +25,9 @@ public class Login {
             System.out.println("======================================================");
 
             if (username.equals(usAdmin) && password.equals(pwAdmin)) {
-                admin1.pageAdmin();
-                break;
+                admin1.pageAdmin(daftarRestoran);
             } else if (username.equals(usCustomer) && password.equals(pwCustomer)) {
                 customer1.pageCustomer();
-                break;
             } else {
                 System.out.println("Password tidak sesuai");
                 System.out.println("Apakah Anda ingin mengulang login? : ");

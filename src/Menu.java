@@ -1,14 +1,19 @@
 import java.util.ArrayList;
 
 public class Menu {
-    public String namaMenu;
+    public int getIdMenu() {
+        return idMenu;
+    }
 
-    public Menu(String namaMenu, int hargaMenu) {
+    public int idMenu;
+    public String namaMenu;
+    public int hargaMenu;
+
+    public Menu(int idMenu, String namaMenu, int hargaMenu) {
+        this.idMenu = idMenu;
         this.namaMenu = namaMenu;
         this.hargaMenu = hargaMenu;
     }
-
-    public int hargaMenu;
 
     public String getNamaMenu() {
         return namaMenu;

@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Customer {
-    public void pageCustomer() {
+    public void pageCustomer(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
         Scanner input = new Scanner(System.in);
-
+        Customer customers = new Customer();
         int pilihan;
         boolean ulang = true;
 
@@ -13,22 +13,22 @@ public class Customer {
             System.out.println("|                   CUSTOMER PAGE                    |");
             System.out.println("======================================================");
             System.out.println("    1. Melihat Restaurant");
-            System.out.println("    2. Buat Pesanan "     );
-            System.out.println("    3. LihatPesanan"      );
-            System.out.println("    4. Kembali ke Log in" );
+            System.out.println("    2. Buat Pesanan");
+            System.out.println("    3. LihatPesanan");
+            System.out.println("    4. Kembali ke Log in");
             System.out.println("======================================================");
 
             System.out.print("Masukkan pilihan Anda : ");
             pilihan = input.nextInt();
 
             if (pilihan == 1) {
-
+                customers.lihatRestoran(daftarRestoran, daftarMenu);
             } else if (pilihan == 2) {
-
+                customers.buatPesanan(daftarRestoran, daftarMenu);
             } else if (pilihan == 3) {
-
+                customers.lihatPesanan(daftarRestoran, daftarMenu);
             } else if (pilihan == 4) {
-
+                customers.kembaliLogin(daftarRestoran, daftarMenu);
             } else {
                 System.out.println("Input Anda tidak valid");
                 System.out.println("'ulang' untuk mengulang dan 'tidak' untuk keluar");
@@ -37,7 +37,37 @@ public class Customer {
                     ulang = false;
                 }
             }
-            System.out.println("Program berakhir.");
         }
+        System.out.println("Program berakhir.");
+    }
+
+    private void lihatPesanan(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
+
+    }
+
+    private void buatPesanan(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
+    }
+
+    private void lihatRestoran(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
+        System.out.println("======================================================");
+        System.out.println("|                 DAFTAR RESTAURANT                  |");
+        System.out.println("======================================================");
+        Scanner scanner = new Scanner(System.in);
+        if(daftarRestoran.isEmpty()){
+            System.out.println("Tidak Ada Restoran yang Terdaftar");
+        } else {
+            for (int i=0; i<daftarRestoran.size(); i++){
+                System.out.println("Restoran " + i+1);
+                System.out.println("Nama: " + daftarRestoran.get(i).getNama());
+                System.out.println("Alamat: " + daftarRestoran.get(i).getAlamat());
+            }
+        }
+        scanner.nextLine();
+    }
+
+    public void kembaliLogin(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
+        Login logins = new Login();
+        logins.login(daftarRestoran, daftarMenu);
     }
 }
+

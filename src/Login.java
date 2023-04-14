@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Login {
-    public static void login(ArrayList<Restaurant> daftarRestoran) {
+    public static void login(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
         Scanner input = new Scanner(System.in);
         String username, password;
         boolean ulang = true;
@@ -16,7 +16,8 @@ public class Login {
         while (ulang) {
 
             System.out.println("======================================================");
-            System.out.println("|    Halo, Selamat Datang di Mississipi Restaurant   |");
+            System.out.println("|                HALO, SELAMAT DATANG                |");
+            System.out.println("|           SILAKAN LOG IN TERLEBIH DAHULU           |");
             System.out.println("======================================================");
             System.out.print("    Masukkan username : ");
             username = input.nextLine();
@@ -25,9 +26,9 @@ public class Login {
             System.out.println("======================================================");
 
             if (username.equals(usAdmin) && password.equals(pwAdmin)) {
-                admin1.pageAdmin(daftarRestoran);
+                admin1.pageAdmin(daftarRestoran, daftarMenu);
             } else if (username.equals(usCustomer) && password.equals(pwCustomer)) {
-                customer1.pageCustomer();
+                customer1.pageCustomer(daftarRestoran, daftarMenu);
             } else {
                 System.out.println("Password tidak sesuai");
                 System.out.println("Apakah Anda ingin mengulang login? : ");

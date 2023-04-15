@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Customer {
+
+    private static ArrayList<Pesanan>
     public void pageCustomer(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
         Scanner input = new Scanner(System.in);
         Customer customers = new Customer();
@@ -41,12 +43,6 @@ public class Customer {
         System.out.println("Program berakhir.");
     }
 
-    private void lihatPesanan(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
-
-    }
-
-    private void buatPesanan(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
-    }
 
     private void lihatRestoran(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
         System.out.println("======================================================");
@@ -64,6 +60,26 @@ public class Customer {
         }
         scanner.nextLine();
     }
+
+
+    private void buatPesanan(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
+        if(daftarMenu.isEmpty()){
+            System.out.println("Tidak Ada Menu yang Terdaftar");
+        } else {
+            for (int i=0; i<daftarMenu.size(); i++){
+                System.out.println("Menu " + i+1);
+                System.out.println("Nama Menu: " + daftarMenu.get(i).getNamaMenu());
+                System.out.println("Harga Menu: " + daftarMenu.get(i).getHargaMenu());
+            }
+        }
+        scanner.nextLine();
+    }
+
+
+    private void lihatPesanan(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
+
+    }
+
 
     public void kembaliLogin(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
         Login logins = new Login();

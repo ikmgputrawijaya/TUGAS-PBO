@@ -2,19 +2,23 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Login {
+
+    //Method login
     public static void login(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
         Scanner input = new Scanner(System.in);
         String username, password;
         boolean ulang = true;
 
+        //Membuat objek admin1 dan customer1 dari kelas Admin dan Customer
         Admin admin1 = new Admin();
         Customer customer1 = new Customer();
 
+        //Membuat variabel bertipe String untuk login admin dan customer
         String usAdmin = "sayaadmin", pwAdmin = "12345";
         String usCustomer = "sayacustomer", pwCustomer = "12345";
 
+        //perulangan untuk login
         while (ulang) {
-
             System.out.println("======================================================");
             System.out.println("|                HALO, SELAMAT DATANG                |");
             System.out.println("|           SILAKAN LOG IN TERLEBIH DAHULU           |");
@@ -25,6 +29,7 @@ public class Login {
             password = input.nextLine();
             System.out.println("======================================================");
 
+            //if-else untuk validasi login
             if (username.equals(usAdmin) && password.equals(pwAdmin)) {
                 admin1.pageAdmin(daftarRestoran, daftarMenu);
             } else if (username.equals(usCustomer) && password.equals(pwCustomer)) {

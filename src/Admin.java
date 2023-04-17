@@ -5,9 +5,12 @@ public class Admin {
 
     int pilihan1;
 
+    //Deklarasi sebuah objek Scanner dengan nama variabel input
     private static Scanner input = new Scanner(System.in);
 
+    //Method untuk menampilkan halaman menu untuk admin
     public void pageAdmin(ArrayList<Restaurant>daftarRestoran, ArrayList<Menu> daftarMenu) {
+
         int pilihan;
         boolean ulang = true;
 
@@ -40,16 +43,17 @@ public class Admin {
                     ulang = false;
                 }
             }
-//            System.out.println("Program berakhir.");
             input.nextLine();
         }
     }
 
+    //Method untuk melihat restaurant
     public void melihatRestaurant(ArrayList<Restaurant>daftarRestoran, ArrayList<Menu> daftarMenu){
         System.out.println("======================================================");
         System.out.println("|                 DAFTAR RESTAURANT                  |");
         System.out.println("======================================================");
 
+        //If else untuk menampilkan data restaurant jika ada, apabila tidak ada akan muncul output "Tidak Ada Restoran yang Terdaftar"
         if(daftarRestoran.isEmpty()){
             System.out.println("Tidak Ada Restoran yang Terdaftar");
         } else {
@@ -61,7 +65,7 @@ public class Admin {
 
                 ArrayList<Menu> menuRestoran = new ArrayList<>();
                 for (int j = 0; j < daftarMenu.size(); j++) {
-                    if (daftarMenu.get(j).getIdRestoran() == daftarRestoran.get(i).getIdRestoran()) {
+                    if (daftarMenu.get(j).getIdMenu() == daftarRestoran.get(i).getIdRestoran()) {
                         menuRestoran.add(daftarMenu.get(j));
                     }
                 }
@@ -80,7 +84,7 @@ public class Admin {
         input.nextLine();
     }
 
-
+    //Method untuk menambah restaurant
     public void menambahRestaurant(ArrayList<Restaurant>daftarRestoran,ArrayList<Menu> daftarMenu ) {
         input.nextLine();
         System.out.println("======================================================");
@@ -115,6 +119,7 @@ public class Admin {
             pilihan1 = input.nextInt();
             System.out.println("======================================================");
 
+            //Menambah menu
             if (pilihan1==1) {
                 input.nextLine();
                 for (int i=0; i<daftarRestoran.size(); i++){
@@ -144,6 +149,7 @@ public class Admin {
 
                 System.out.println("Menu berhasil ditambahkan");
 
+                //Melihat menu
             }else if (pilihan1==2) {
                 if(daftarRestoran.isEmpty()){
                     System.out.println("Tidak Ada Menu yang Terdaftar");
@@ -163,6 +169,7 @@ public class Admin {
                     System.out.println("Harga: " + item.hargaMenu);
                 }
 
+                //Kembali ke menu admin
             }else if(pilihan1 == 3){
                 pageAdmin(daftarRestoran, daftarMenu);
             }else {
@@ -172,10 +179,12 @@ public class Admin {
 
     }
 
+    //Method untuk menghapus restaurant
     public void menghapusRestaurant(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
         System.out.println("======================================================");
         System.out.println("|                  HAPUS RESTAURANT                  |");
         System.out.println("======================================================");
+
 
         if(daftarRestoran.isEmpty()){
             System.out.println("Tidak Ada Restoran yang Terdaftar");
@@ -203,6 +212,7 @@ public class Admin {
         }
     }
 
+    //Method untuk kembali ke halaman login
     public void kembaliLogin(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu){
         Login logins = new Login();
         logins.login(daftarRestoran, daftarMenu);

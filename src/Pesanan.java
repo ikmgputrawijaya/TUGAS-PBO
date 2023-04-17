@@ -1,5 +1,9 @@
 public class Pesanan {
+
+    //Deklarasi variable instance menu
    private Menu menu;
+
+
    private int jumlah;
 
     public Pesanan(Menu menu, int banyakMenu) {

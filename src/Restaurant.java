@@ -1,8 +1,7 @@
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class Restaurant {
-
+        //Menyimpan data Menu
         ArrayList<Menu> daftarMenu = new ArrayList<Menu>();
 
         public String nama;
@@ -18,7 +17,7 @@ public class Restaurant {
 
     public int idRestoran;
 
-
+        //Constructor class Restaurant
         public Restaurant(int idRestoran, String nama, String alamat) {
             this.idRestoran = idRestoran;
             this.nama = nama;
@@ -26,6 +25,8 @@ public class Restaurant {
             this.daftarMenu = new ArrayList<>();
         }
 
+
+    //Mengubah nilai atribut dengan nilai parameter
     public void setNama(String nama) {
         this.nama = nama;
     }
@@ -34,6 +35,7 @@ public class Restaurant {
         this.alamat = alamat;
     }
 
+    //Mengembalikan nilai dari atribut nama dan alamat
     public String getNama() {
             return nama;
         }

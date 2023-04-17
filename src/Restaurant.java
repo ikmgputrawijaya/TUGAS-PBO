@@ -40,9 +40,6 @@ public class Restaurant {
     public String getAlamat() {
             return alamat;
         }
-    /*public int getID() {
-            return Integer.parseInt(idRestoran);
-    }*/
 
 
         public void tambahMenu (Menu menu) {

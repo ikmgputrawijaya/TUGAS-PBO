@@ -12,14 +12,14 @@ public class Admin {
         boolean ulang = true;
 
         while (ulang) {
-            System.out.println("======================================================");
-            System.out.println("|                    ADMIN PAGE                      |");
-            System.out.println("======================================================");
-            System.out.println("    1. Melihat Restaurant"                             );
-            System.out.println("    2. Menambahkan Restaurant "                        );
-            System.out.println("    3. Menghapus Restaurant"                           );
-            System.out.println("    4. Kembali ke Log in"                              );
-            System.out.println("======================================================");
+            System.out.println("=========================================================");
+            System.out.println("|                    ADMIN PAGE                         |");
+            System.out.println("=========================================================");
+            System.out.println("    1. Melihat Restaurant"                                );
+            System.out.println("    2. Menambahkan Restaurant sekaligus menambahkan menu" );
+            System.out.println("    3. Menghapus Restaurant"                              );
+            System.out.println("    4. Kembali ke Log in"                                 );
+            System.out.println("======================================================   ");
 
             System.out.print("Masukkan pilihan Anda : ");
             pilihan = input.nextInt();
@@ -54,9 +54,27 @@ public class Admin {
             System.out.println("Tidak Ada Restoran yang Terdaftar");
         } else {
             for (int i=0; i<daftarRestoran.size(); i++){
-                System.out.println("Restoran " + i+1);
+                System.out.println("Restoran " + (i+1));
+                System.out.println("ID : " + daftarRestoran.get(i).getIdRestoran());
                 System.out.println("Nama: " + daftarRestoran.get(i).getNama());
                 System.out.println("Alamat: " + daftarRestoran.get(i).getAlamat());
+
+                ArrayList<Menu> menuRestoran = new ArrayList<>();
+                for (int j = 0; j < daftarMenu.size(); j++) {
+                    if (daftarMenu.get(j).getIdRestoran() == daftarRestoran.get(i).getIdRestoran()) {
+                        menuRestoran.add(daftarMenu.get(j));
+                    }
+                }
+
+                // Tampilkan menu yang terkait dengan restoran saat ini
+                if (menuRestoran.isEmpty()) {
+                    System.out.println("Tidak Ada Menu yang Tersedia");
+                } else {
+                    System.out.println("Menu:");
+                    for (int j = 0; j < menuRestoran.size(); j++) {
+                        System.out.println("- " + menuRestoran.get(j).getNamaMenu() + " (" + menuRestoran.get(j).getHargaMenu() + ")");
+                    }
+                }
             }
         }
         input.nextLine();
@@ -99,12 +117,8 @@ public class Admin {
 
             if (pilihan1==1) {
                 input.nextLine();
-
-                if(daftarRestoran.isEmpty()){
-                    System.out.println("Tidak Ada Restoran yang Terdaftar");
-                }
                 for (int i=0; i<daftarRestoran.size(); i++){
-                    System.out.println("Restoran " + daftarRestoran.get(i).getIdRestoran());
+                    System.out.println("ID Restoran " + daftarRestoran.get(i).getIdRestoran());
                     System.out.println("Nama: " + daftarRestoran.get(i).getNama());
                     System.out.println("Alamat: " + daftarRestoran.get(i).getAlamat());
                 }
@@ -130,22 +144,17 @@ public class Admin {
 
                 System.out.println("Menu berhasil ditambahkan");
 
-
-
             }else if (pilihan1==2) {
                 if(daftarRestoran.isEmpty()){
                     System.out.println("Tidak Ada Menu yang Terdaftar");
                 }
                 for (int i = 0; i < daftarRestoran.size(); i++){
-                    System.out.println("Restoran " + daftarRestoran.get(i).getIdRestoran());
+                    System.out.println("ID Restoran " + daftarRestoran.get(i).getIdRestoran());
                     System.out.println("Nama Restoran : " + daftarRestoran.get(i).getNama());
                 }
                 System.out.print("Pilih restaurant yang akan dilihat menunya : ");
                 int pilih = input.nextInt();
 
-                if(daftarMenu.isEmpty()) {
-                    System.out.println("Tidak Ada Restoran yang Terdaftar");
-                }
                 Restaurant restaurant = fiturs.cariRestaurant(pilih, daftarRestoran, daftarMenu);
                 ArrayList<Menu> menuRestaurant = restaurant.getDaftarMenu();
                 for(Menu item : menuRestaurant){
@@ -172,19 +181,25 @@ public class Admin {
             System.out.println("Tidak Ada Restoran yang Terdaftar");
         } else {
             for (int i=0; i<daftarRestoran.size(); i++){
-                System.out.println("Restoran " + daftarRestoran.get(i).getIdRestoran());
+                System.out.println("ID Restoran " + daftarRestoran.get(i).getIdRestoran());
                 System.out.println("Nama   : " + daftarRestoran.get(i).getNama());
                 System.out.println("Alamat : " + daftarRestoran.get(i).getAlamat());
             }
         }
-
-        System.out.print("Masukkan nomor restaurant yang ingin dihapus : ");
-        int nomor = input.nextInt();
-        if(nomor < 1 || nomor > daftarRestoran.size()){
-            System.out.println("Nomor restaurant tidak valid.");
-        } else {
-            daftarRestoran.remove(nomor-1);
+        System.out.print("Masukkan ID restaurant yang ingin dihapus : ");
+        int IdRestoran = input.nextInt();
+        boolean found = false;
+        for (int i = 0; i < daftarRestoran.size(); i++) {
+            if (daftarRestoran.get(i).getIdRestoran() == IdRestoran) {
+                daftarRestoran.remove(i);
+                found = true;
+                break;
+            }
+        }
+        if (found) {
             System.out.println("Restoran berhasil dihapus.");
+        } else {
+            System.out.println("Restoran dengan ID tersebut tidak ditemukan.");
         }
     }
 

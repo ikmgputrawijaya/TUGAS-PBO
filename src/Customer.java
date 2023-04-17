@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Customer {
 
-    private static ArrayList<Pesanan>
+    private static ArrayList<Pesanan> pesananArrayList;
     public void pageCustomer(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
         Scanner input = new Scanner(System.in);
         Customer customers = new Customer();
@@ -52,6 +52,7 @@ public class Customer {
         if(daftarRestoran.isEmpty()){
             System.out.println("Tidak Ada Restoran yang Terdaftar");
         } else {
+
             for (int i=0; i<daftarRestoran.size(); i++){
                 System.out.println("Restoran " + i+1);
                 System.out.println("Nama: " + daftarRestoran.get(i).getNama());
@@ -61,18 +62,18 @@ public class Customer {
         scanner.nextLine();
     }
 
-
     private void buatPesanan(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
         if(daftarMenu.isEmpty()){
             System.out.println("Tidak Ada Menu yang Terdaftar");
         } else {
+            Scanner scanner = new Scanner(System.in);
             for (int i=0; i<daftarMenu.size(); i++){
                 System.out.println("Menu " + i+1);
                 System.out.println("Nama Menu: " + daftarMenu.get(i).getNamaMenu());
                 System.out.println("Harga Menu: " + daftarMenu.get(i).getHargaMenu());
             }
         }
-        scanner.nextLine();
+       // scanner.nextLine();
     }
 
 

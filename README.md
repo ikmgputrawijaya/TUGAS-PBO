@@ -36,7 +36,7 @@ password customer  : 12345
 1. Untuk login sebagai customer, user perlu menginputkan username dan password customer. 
 2. Pada menu customer, user dapat menginputkan 1 untuk melihat restaurant yang telah ditambahkan oleh admin sebelummnya. Apabila belum ada, maka akan muncul output "Tidak Ada Restoran yang Terdaftar". 
 3. User (customer) dapat menginputkan 2 untuk membuat pesanan. Pertama, customer diminta untuk memilih restaurant yang ingin dikunjungi, lalu customer disajikan menu yang tersedia pada restaurant tersebut. Customer dapat menginputkan id menu yang ingin dipesan, kuantitas, dan jarak rumahnya.
-4. Apabila customer menginputkan 3 pada halaman customer, maka customer dapat melihat pesanan yang telah dibuat sebelumnya, yang ditamplkan, yaitu nama restaurant, id restaurant, menu yang dipesan, jumlah, jarak rumah, dan total harga.
+4. Apabila customer menginputkan 3 pada halaman customer, maka customer dapat melihat pesanan yang telah dibuat sebelumnya, yang ditamplkan, yaitu nama restaurant,  menu yang dipesan, jumlah, jarak rumah, dan total harga.
 5. Apabila customer menginputkan 4 pada halaman customer, maka customer akan kembali ke halaman login.
 </p>
 

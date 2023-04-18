@@ -1,14 +1,14 @@
 <h3><b>SELAMAT DATANG DI WEB MAKANAN ONLINE</b></h3>
 
 <p>
- 
- ikmgputrawijaya  = putrawijaya537@gmail.com
- ikmgptrwjy       = wijaya.2205551082@student.unud.ac.id
+ ikmgputrawijaya  = putrawijaya537@gmail.com <br>
+ ikmgptrwjy       = wijaya.2205551082@student.unud.ac.id <br>
  
  
  - Mohon maaf sebelumnya, repositori ini dibuat pada akun github ini (email pribadi), tetapi saya tidak sadar bahwa Intellij yang saya pakai terhubung menggunakan akun udayana, sehingga commit yang dilakukan di Intellij atas nama akun udayana. Jadi terdapat 2 contributors pada repositori ini. Commit akhir dilakukan menggunakan akun ini (email pribadi), karena akun udayana saya yang terhubung dengan Intellij tidak dapat melakukan push (error entah mengapa dikarenakan saya pernah mencoba untuk kembali ke commit sebelumnya), terima kasih _/|\_.
+ </p>
  
- 
+<p>
 Web makanan online merupakan program yang dibuat dengan menggunakan bahasa Java. Di mana terdapat dua role pada program ini, yaitu
 admin dan customer. Admin dapat memiliki akses untuk melihat restaurant yang ada, menambahkan restaurant dan menambahkan menu. Admin juga dapat melihat menu pada suatu restaurant tertentu. Admin dapat menghapus restaurant yang telah ditambahkan saat program dijalankan. 
  Sedangkan customer dapat memiliki akses untuk melihat restaurant ang ada, membuat pesanan, dan melihat pesanan yang telah dibuat. Pertama-tama user diminta untuk log in berdasarkan rolenya. 

@@ -12,4 +12,14 @@ public class Fitur {
         }
         return null;
     }
+
+    public Menu mencariMenu(int id, ArrayList<Menu> daftarMenu) {
+        for (Menu menu : daftarMenu) {
+            if (menu.getIdMenu() == id) {
+                return menu;
+            }
+        }
+        return null;
+    }
 }
+

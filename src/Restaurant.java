@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Restaurant {
+
         //Menyimpan data Menu
         ArrayList<Menu> daftarMenu = new ArrayList<Menu>();
 
@@ -43,9 +44,32 @@ public class Restaurant {
             return alamat;
         }
 
-
         public void tambahMenu (Menu menu) {
             daftarMenu.add(menu);
         }
+
+        
+    //Deklarasi variable instance menu
+    private Menu menu;
+    private int jumlahOrder;
+    private int jarakRumah;
+
+
+
+    public ArrayList<Pesanan> getDaftarPesanan() {return getDaftarPesanan();}
+
+    public Menu getMenu() {
+        return menu;
+    }
+    public int getJumlah() {
+        return jumlahOrder;
+    }
+    public int getJarakRumah() {
+        return jarakRumah;
+    }
+    public int getTotalHarga() {
+        return menu.getHargaMenu() * jumlahOrder + (jarakRumah/2);
+    }
+
 }
 

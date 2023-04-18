@@ -22,7 +22,7 @@ public class Admin {
             System.out.println("    2. Menambahkan Restaurant sekaligus menambahkan menu" );
             System.out.println("    3. Menghapus Restaurant"                              );
             System.out.println("    4. Kembali ke Log in"                                 );
-            System.out.println("======================================================   ");
+            System.out.println("=========================================================");
 
             System.out.print("Masukkan pilihan Anda : ");
             pilihan = input.nextInt();
@@ -56,6 +56,7 @@ public class Admin {
         //If else untuk menampilkan data restaurant jika ada, apabila tidak ada akan muncul output "Tidak Ada Restoran yang Terdaftar"
         if(daftarRestoran.isEmpty()){
             System.out.println("Tidak Ada Restoran yang Terdaftar");
+            System.out.println("Tekan enter untuk melanjutkan");
         } else {
             for (int i=0; i<daftarRestoran.size(); i++){
                 System.out.println("Restoran " + (i+1));

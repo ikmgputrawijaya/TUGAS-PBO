@@ -6,6 +6,9 @@ public class Main {
         ArrayList<Restaurant> daftarRestoran = new ArrayList<Restaurant>();
         //Menyimpan data menu
         ArrayList<Menu> daftarMenu = new ArrayList<Menu>();
+        //Menyimpan data pesanan
+        ArrayList<Pesanan> daftarPesanan = new ArrayList<Pesanan>();
+
         //Membuat objek logins dari kelas Login
         Login logins = new Login();
         //Memanggil metode login

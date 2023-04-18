@@ -167,7 +167,7 @@ public class Customer {
                 System.out.println("Nama Restoran    : " + pesanan.getDaftarPesanan());
                 System.out.println("Menu             : " + pesanan.getDaftarPesanan());
                 System.out.println("Jumlah           : " + pesanan.getDaftarPesanan().get(i).getJumlahOrder());
-                System.out.println("Sub Total Harga  : Rp " + pesanan.getDaftarPesanan().get(i).getTotalHarga());
+                System.out.println("Jarak Rumah      : " + pesanan.getDaftarPesanan().get(i).getJarakRumah());
                 System.out.println("Total Harga      : Rp " + pesanan.getDaftarPesanan().get(i).getTotalHarga());
             }
         }

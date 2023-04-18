@@ -19,7 +19,7 @@ public class Admin {
             System.out.println("|                    ADMIN PAGE                         |");
             System.out.println("=========================================================");
             System.out.println("    1. Melihat Restaurant"                                );
-            System.out.println("    2. Menambahkan Restaurant Sekaligus Menambahkan Menu" );
+            System.out.println("    2. Menambahkan Restaurant sekaligus menambahkan menu" );
             System.out.println("    3. Menghapus Restaurant"                              );
             System.out.println("    4. Kembali ke Log in"                                 );
             System.out.println("=========================================================");
@@ -146,7 +146,7 @@ public class Admin {
                 int hargaMenu =input.nextInt();
 
                 Menu daftarsMenu = new Menu(idMenu, namaMenu, hargaMenu);
-                restaurants.daftarMenu.add(daftarsMenu);
+                restaurants.tambahMenu(daftarsMenu);
 
                 System.out.println("Menu berhasil ditambahkan");
 
@@ -191,9 +191,9 @@ public class Admin {
             System.out.println("Tidak Ada Restoran yang Terdaftar");
         } else {
             for (int i=0; i<daftarRestoran.size(); i++){
-                System.out.println("ID Restoran  " + daftarRestoran.get(i).getIdRestoran());
-                System.out.println("Nama         : " + daftarRestoran.get(i).getNama());
-                System.out.println("Alamat       : " + daftarRestoran.get(i).getAlamat());
+                System.out.println("ID Restoran " + daftarRestoran.get(i).getIdRestoran());
+                System.out.println("Nama   : " + daftarRestoran.get(i).getNama());
+                System.out.println("Alamat : " + daftarRestoran.get(i).getAlamat());
             }
         }
         System.out.print("Masukkan ID restaurant yang ingin dihapus : ");

@@ -1,18 +1,18 @@
 import java.util.ArrayList;
 
 public class Pesanan {
-
     //Deklarasi variable instance menu
     private Menu menu;
+    private int jumlah;
+    private int jarakRumah;
 
-    public Pesanan(int jumlahOrder, int jarakRumah) {
+    public Pesanan(Menu menu, int jumlahOrder) {
+        this.menu = menu;
         this.jumlah = jumlahOrder;
-        this.jarakRumah = jarakRumah;
     }
-
-
-    public ArrayList<Pesanan> getDaftarPesanan() {return getDaftarPesanan();}
-
+    public ArrayList<Pesanan> getDaftarPesanan() {
+        return getDaftarPesanan();
+    }
     public Menu getMenu() {
         return menu;
     }
@@ -25,9 +25,4 @@ public class Pesanan {
     public int getTotalHarga() {
         return menu.getHargaMenu() * jumlah + (jarakRumah/2);
     }
-
-
-
-   private int jumlah;
-   private int jarakRumah;
 }

@@ -62,12 +62,12 @@ public class Customer {
 
             for (int i=0; i<daftarRestoran.size(); i++){
                 System.out.println("Restoran " + (i+1));
-                System.out.println("ID : " + daftarRestoran.get(i).getIdRestoran());
-                System.out.println("Nama: " + daftarRestoran.get(i).getNama());
-                System.out.println("Alamat: " + daftarRestoran.get(i).getAlamat());
-                System.out.println("Tekan enter untuk kembali ke halaman customer");
+                System.out.println("ID      : " + daftarRestoran.get(i).getIdRestoran());
+                System.out.println("Nama    : " + daftarRestoran.get(i).getNama());
+                System.out.println("Alamat  : " + daftarRestoran.get(i).getAlamat());
             }
         }
+        System.out.println("Tekan enter untuk kembali ke halaman customer");
         scanner.nextLine();
     }
 
@@ -79,13 +79,16 @@ public class Customer {
 
         // Memilih restoran
         System.out.println("======================================================");
-        System.out.println("Pilih Restoran: ");
+        System.out.println("Pilih Restoran : ");
         for (Restaurant restoran : daftarRestoran) {
-            System.out.println(restoran.getIdRestoran() + "----- " + restoran.getNama() + "-----" +restoran.getAlamat());
+            System.out.println("ID Restaurant      : " + restoran.getIdRestoran());
+            System.out.println("Nama Restaurant    : " + restoran.getNama());
+            System.out.println("Alamat Restaurant  : " + restoran.getAlamat());
+            System.out.println("");
         }
         System.out.print("Masukkan ID Restoran: ");
         int idRestoran = scanner.nextInt();
-        scanner.nextLine(); // membaca karakter \n setelah angka
+        scanner.nextLine();
 
         //Mencari restoran berdasarkan id
         restaurant = fiturs.cariRestaurant(idRestoran, daftarRestoran, daftarMenu);
@@ -106,8 +109,11 @@ public class Customer {
         ArrayList<Pesanan> pesananList = new ArrayList<>();
         boolean Iya = true;
         while (Iya) {
+            System.out.println("----------------------------------------");
             System.out.print("Pilih menu (ID Menu): ");
             int idMenu = scanner.nextInt();
+
+
             scanner.nextLine(); // membaca karakter \n setelah angka
 
             //Mencari menu berdasarkan id
@@ -122,41 +128,45 @@ public class Customer {
             int jumlahPesanan = scanner.nextInt();
             scanner.nextLine();
 
-            //Memasukkan jarak rumah
-            System.out.print("Jarak rumah : ");
-            int jarakRumah = scanner.nextInt();
-            scanner.nextLine();
-
             System.out.println("Apakah Anda ingin memesan lagi?");
             System.out.println("'Iya' atau 'Tidak'");
             String pilihOrderLagi = scanner.next();
+            Pesanan pesanan = new Pesanan(menu, jumlahPesanan);
+            daftarPesanan.add(pesanan);
 
             if (pilihOrderLagi.equalsIgnoreCase("Tidak")) {
                 Iya = false;
+
+
             }
         }
+        //Memasukkan jarak rumah
+        System.out.print("Jarak rumah : ");
+        int jarakRumah = scanner.nextInt();
+        scanner.nextLine();
     }
 
 
     //Method untuk melihat pesanan
     private void lihatPesanan(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu, ArrayList<Pesanan> daftarPesanan) {
-        System.out.println("Daftar pesanan Anda: ");
-        for (int i = 0; i < daftarRestoran.size(); i++) {
-            for (int j = 0; j < daftarRestoran.get(i).getDaftarPesanan().size(); j++) {
-                if (daftarRestoran.get(i).getDaftarPesanan().get(j).equals(this)) {
-                    Pesanan pesanan = daftarRestoran.get(i).getDaftarPesanan().get(j);
-                    System.out.println("==============================================");
-                    System.out.println("Nama Restoran : " + daftarRestoran.get(i).getNama());
-                    System.out.println("-----------------Pesanan Anda-----------------");
-                    System.out.println("ID menu : " + pesanan.getMenu().getIdMenu());
-                    System.out.println("Nama    : " + pesanan.getMenu().getNamaMenu());
-                    System.out.println("Harga   : " + pesanan.getMenu().getHargaMenu());
-                    System.out.println("Jarak   : " + pesanan.getJarakRumah());
-                    System.out.println("Total   : " + pesanan.getJumlah());
-                    System.out.println("==============================================");
-                }
+        System.out.println("======================================================");
+        System.out.println("|                    DAFTAR PESANAN                  |");
+        System.out.println("======================================================");
+
+        if(daftarPesanan.isEmpty()){
+            System.out.println("Tidak Ada Pesanan yang Terdaftar");
+        } else {
+            for (int i=0; i<daftarPesanan.size(); i++){
+                System.out.println("Pesanan " + (i+1));
+                System.out.println("Nama Restoran    : " + daftarRestoran.get(i).getNama());
+                System.out.println("Menu             : " + daftarPesanan.get(i).getMenu().getNamaMenu()+ " - Rp " + daftarPesanan.get(i).getMenu().getHargaMenu());
+                System.out.println("Jumlah           : " + daftarRestoran.get(i).getJumlah());
+                System.out.println("Jarak (dalam km) : " + daftarRestoran.get(i).getJarakRumah());
+                System.out.println("Total Harga      : Rp " + daftarRestoran.get(i).getTotalHarga());
             }
         }
+        System.out.println("Tekan enter untuk kembali ke halaman customer");
+        scanner.nextLine();
     }
 
 

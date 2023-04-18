@@ -19,7 +19,7 @@ public class Admin {
             System.out.println("|                    ADMIN PAGE                         |");
             System.out.println("=========================================================");
             System.out.println("    1. Melihat Restaurant"                                );
-            System.out.println("    2. Menambahkan Restaurant sekaligus menambahkan menu" );
+            System.out.println("    2. Menambahkan Restaurant Sekaligus Menambahkan Menu" );
             System.out.println("    3. Menghapus Restaurant"                              );
             System.out.println("    4. Kembali ke Log in"                                 );
             System.out.println("=========================================================");
@@ -59,10 +59,10 @@ public class Admin {
             System.out.println("Tekan enter untuk melanjutkan");
         } else {
             for (int i=0; i<daftarRestoran.size(); i++){
-                System.out.println("Restoran " + (i+1));
-                System.out.println("ID : " + daftarRestoran.get(i).getIdRestoran());
-                System.out.println("Nama: " + daftarRestoran.get(i).getNama());
-                System.out.println("Alamat: " + daftarRestoran.get(i).getAlamat());
+                System.out.println("Restoran  " + (i+1));
+                System.out.println("ID       : " + daftarRestoran.get(i).getIdRestoran());
+                System.out.println("Nama     : " + daftarRestoran.get(i).getNama());
+                System.out.println("Alamat   : " + daftarRestoran.get(i).getAlamat());
 
                 ArrayList<Menu> menuRestoran = new ArrayList<>();
                 for (int j = 0; j < daftarMenu.size(); j++) {
@@ -92,12 +92,12 @@ public class Admin {
         System.out.println("|                 TAMBAH RESTAURANT                  |");
         System.out.println("======================================================");
 
-        System.out.print("Masukkan id restaurant : ");
+        System.out.print("Masukkan id restaurant     : ");
         int idRestoran = input.nextInt();
 
         input.nextLine();
 
-        System.out.print("Masukkan nama restaurant : ");
+        System.out.print("Masukkan nama restaurant   : ");
         String namaRestoran = input.nextLine();
 
         System.out.print("Masukkan alamat restaurant : ");
@@ -125,8 +125,8 @@ public class Admin {
                 input.nextLine();
                 for (int i=0; i<daftarRestoran.size(); i++){
                     System.out.println("ID Restoran " + daftarRestoran.get(i).getIdRestoran());
-                    System.out.println("Nama: " + daftarRestoran.get(i).getNama());
-                    System.out.println("Alamat: " + daftarRestoran.get(i).getAlamat());
+                    System.out.println("Nama      : " + daftarRestoran.get(i).getNama());
+                    System.out.println("Alamat    : " + daftarRestoran.get(i).getAlamat());
                 }
                 System.out.print("Pilih restaurant yang akan di tambahkan menu : ");
                 int pilih = input.nextInt();
@@ -139,10 +139,10 @@ public class Admin {
 
                 input.nextLine();
 
-                System.out.print("Nama menu : ");
+                System.out.print("Nama menu       : ");
                 String namaMenu = input.nextLine();
 
-                System.out.print("Harga menu : ");
+                System.out.print("Harga menu      : ");
                 int hargaMenu =input.nextInt();
 
                 Menu daftarsMenu = new Menu(idMenu, namaMenu, hargaMenu);
@@ -156,7 +156,7 @@ public class Admin {
                     System.out.println("Tidak Ada Menu yang Terdaftar");
                 }
                 for (int i = 0; i < daftarRestoran.size(); i++){
-                    System.out.println("ID Restoran " + daftarRestoran.get(i).getIdRestoran());
+                    System.out.println("ID Restoran   " + daftarRestoran.get(i).getIdRestoran());
                     System.out.println("Nama Restoran : " + daftarRestoran.get(i).getNama());
                 }
                 System.out.print("Pilih restaurant yang akan dilihat menunya : ");
@@ -165,9 +165,9 @@ public class Admin {
                 Restaurant restaurant = fiturs.cariRestaurant(pilih, daftarRestoran, daftarMenu);
                 ArrayList<Menu> menuRestaurant = restaurant.getDaftarMenu();
                 for(Menu item : menuRestaurant){
-                    System.out.println("ID Menu " + item.idMenu);
-                    System.out.println("Nama: "+ item.namaMenu);
-                    System.out.println("Harga: " + item.hargaMenu);
+                    System.out.println("ID Menu   " + item.idMenu);
+                    System.out.println("Nama     : "+ item.namaMenu);
+                    System.out.println("Harga    : Rp " + item.hargaMenu);
                 }
 
                 //Kembali ke menu admin
@@ -191,9 +191,9 @@ public class Admin {
             System.out.println("Tidak Ada Restoran yang Terdaftar");
         } else {
             for (int i=0; i<daftarRestoran.size(); i++){
-                System.out.println("ID Restoran " + daftarRestoran.get(i).getIdRestoran());
-                System.out.println("Nama   : " + daftarRestoran.get(i).getNama());
-                System.out.println("Alamat : " + daftarRestoran.get(i).getAlamat());
+                System.out.println("ID Restoran  " + daftarRestoran.get(i).getIdRestoran());
+                System.out.println("Nama         : " + daftarRestoran.get(i).getNama());
+                System.out.println("Alamat       : " + daftarRestoran.get(i).getAlamat());
             }
         }
         System.out.print("Masukkan ID restaurant yang ingin dihapus : ");

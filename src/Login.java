@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Login {
 
     //Method login
-    public static void login(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
+    public static void login(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu, ArrayList<Pesanan> daftarPesanan) {
         Scanner input = new Scanner(System.in);
         String username, password;
         boolean ulang = true;
@@ -31,9 +31,9 @@ public class Login {
 
             //if-else untuk validasi login
             if (username.equals(usAdmin) && password.equals(pwAdmin)) {
-                admin1.pageAdmin(daftarRestoran, daftarMenu);
+                admin1.pageAdmin(daftarRestoran, daftarMenu, daftarPesanan);
             } else if (username.equals(usCustomer) && password.equals(pwCustomer)) {
-                customer1.pageCustomer(daftarRestoran, daftarMenu);
+                customer1.pageCustomer(daftarRestoran, daftarMenu, daftarPesanan);
             } else {
                 System.out.println("Password tidak sesuai");
                 System.out.println("Apakah Anda ingin mengulang login? : ");

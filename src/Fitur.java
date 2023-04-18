@@ -12,7 +12,7 @@ public class Fitur {
         }
         return null;
     }
-
+    //Method untuk mencari objek Menu dengan id tertentu dari daftar Menu yang ada di dalam ArrayList daftarMenu
     public Menu mencariMenu(int id, ArrayList<Menu> daftarMenu) {
         for (Menu menu : daftarMenu) {
             if (menu.getIdMenu() == id) {

@@ -3,12 +3,10 @@ import java.util.Scanner;
 
 public class Customer {
     private static  Scanner scanner = new Scanner(System.in);
-//    private Restaurant restaurant;
+    //private Restaurant restaurant;
 
     //Method untuk menampilkan halaman menu untuk customer
-    public void pageCustomer(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu) {
-
-        ArrayList<Pesanan> daftarPesanan = new ArrayList<>();
+    public void pageCustomer(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu, ArrayList<Pesanan> daftarPesanan) {
 
         Scanner input = new Scanner(System.in);
         Customer customers = new Customer();
@@ -29,7 +27,7 @@ public class Customer {
             if (pilihan == 1) {
                 customers.lihatRestoran(daftarRestoran, daftarMenu);
             } else if (pilihan == 2) {
-                customers.buatPesanan(daftarRestoran, daftarMenu);
+                customers.buatPesanan(daftarRestoran, daftarMenu, daftarPesanan);
             } else if (pilihan == 3) {
                 customers.lihatPesanan(daftarRestoran, daftarMenu, daftarPesanan);
             } else if (pilihan == 4) {
@@ -46,8 +44,7 @@ public class Customer {
         System.out.println("Program berakhir.");
     }
 
-
-    //Melihat restaurant untuk customer
+    //Method untuk melihat pesanan pada customer
     private void lihatRestoran(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu){
         System.out.println("======================================================");
         System.out.println("|                 DAFTAR RESTAURANT                  |");
@@ -72,7 +69,7 @@ public class Customer {
 
 
     //Method untuk membuat pesanan
-    private void buatPesanan(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu){
+    private void buatPesanan(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu, ArrayList<Pesanan> daftarPesanan){
 
         Fitur fiturs = new Fitur();
 
@@ -105,11 +102,11 @@ public class Customer {
         }
 
         //Memilih menu
-//        ArrayList<Pesanan> pesananList = new ArrayList<>();
+        //ArrayList<Pesanan> pesananList = new ArrayList<>();
         boolean Iya = true;
         while (Iya) {
             System.out.println("----------------------------------------");
-            System.out.print("Pilih menu (ID Menu): ");
+            System.out.print("Pilih menu (ID Menu) : ");
             int idMenu = scanner.nextInt();
 
             scanner.nextLine(); // membaca karakter \n setelah angka
@@ -122,22 +119,23 @@ public class Customer {
             }
 
             //Memilih jumlah pesanan
-            System.out.print("Jumlah pesanan : ");
+            System.out.print("Jumlah pesanan      : ");
             int jumlahPesanan = scanner.nextInt();
             scanner.nextLine();
 
             System.out.println("Apakah Anda ingin memesan lagi?");
             System.out.println("'Iya' atau 'Tidak'");
             String pilihOrderLagi = scanner.next();
-            Pesanan pesanan = new Pesanan(menu, jumlahPesanan);
-            restaurants.tambahPesanan(pesanan);
+            Pesanan pesanan = new Pesanan(menu, jumlahPesanan, restaurants);
+
 
             if (pilihOrderLagi.equalsIgnoreCase("Tidak")) {
+                daftarPesanan.add(pesanan);
                 Iya = false;
             }
         }
         //Memasukkan jarak rumah
-        System.out.print("Jarak rumah (dalam km) : ");
+        System.out.print("Jarak rumah (dalam km)  : ");
         int jarakRumah = scanner.nextInt();
 //        scanner.nextLine();
     }
@@ -153,9 +151,9 @@ public class Customer {
 
         for (int i=0; i<daftarRestoran.size(); i++) {
             System.out.println("ID Restoran " + daftarRestoran.get(i).getIdRestoran());
-            System.out.println("Nama      : " + daftarRestoran.get(i).getNama());
+            System.out.println("Nama       : " + daftarRestoran.get(i).getNama());
         }
-        System.out.println("Inputkan id restaurant: ");
+        System.out.println("Inputkan id restaurant  : ");
         int idRestoran = scanner.nextInt();
         //Mencari restoran berdasarkan id
         restaurant = fiturs.cariRestaurant(idRestoran, daftarRestoran, daftarMenu);
@@ -163,15 +161,14 @@ public class Customer {
         if(daftarPesanan.isEmpty()){
             System.out.println("Tidak Ada Pesanan yang Terdaftar");
         } else {
-            for (int i=0; i<restaurant.getDaftarPesanan().size(); i++){
+            for (int i=0; i<daftarPesanan.size(); i++){
+                Pesanan pesanan = daftarPesanan.get(i);
                 System.out.println("Pesanan " + (i+1));
-                System.out.println("Nama Restoran    : " + restaurant.getNama());
-                    System.out.println("Menu             : " + restaurant.getDaftarPesanan().get(i).getMenu().getNamaMenu()+ " - Rp " + restaurant.getDaftarPesanan().get(i).getMenu().getHargaMenu());
-                    System.out.println("Jumlah           : " + restaurant.getDaftarPesanan().get(i).getJumlahOrder());
-                    System.out.println("Sub Total Harga      : Rp " + restaurant.getDaftarPesanan().get(i).getTotalHarga());
-
-//                System.out.println("Jarak (dalam km) : " + daftarRestoran.get(i).getJarakRumah());
-                System.out.println("Total Harga      : Rp " + restaurant.getDaftarPesanan().get(i).getTotalHarga());
+                System.out.println("Nama Restoran    : " + pesanan.getDaftarPesanan());
+                System.out.println("Menu             : " + pesanan.getDaftarPesanan());
+                System.out.println("Jumlah           : " + pesanan.getDaftarPesanan().get(i).getJumlahOrder());
+                System.out.println("Sub Total Harga  : Rp " + pesanan.getDaftarPesanan().get(i).getTotalHarga());
+                System.out.println("Total Harga      : Rp " + pesanan.getDaftarPesanan().get(i).getTotalHarga());
             }
         }
         System.out.println("Tekan enter untuk kembali ke halaman customer");
@@ -181,7 +178,6 @@ public class Customer {
     //Method untuk kembali ke halaman login
     public void kembaliLogin(ArrayList<Restaurant> daftarRestoran, ArrayList<Menu> daftarMenu, ArrayList<Pesanan> daftarPesanan) {
         Login logins = new Login();
-        logins.login(daftarRestoran, daftarMenu);
+        logins.login(daftarRestoran, daftarMenu, daftarPesanan);
     }
 }
-

@@ -12,6 +12,6 @@ public class Main {
         //Membuat objek logins dari kelas Login
         Login logins = new Login();
         //Memanggil metode login
-        logins.login(daftarRestoran, daftarMenu);
+        logins.login(daftarRestoran, daftarMenu, daftarPesanan);
     }
 }
